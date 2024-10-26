@@ -1,7 +1,7 @@
 class Solution {
   public:
     bool findTriplet(vector<int>& arr) {
-        // Ypur code here
+        // Your code here
         int n = arr.size();
         sort(arr.begin(), arr.end());  
         
