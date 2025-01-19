@@ -1,0 +1,29 @@
+class Solution {
+public:
+    Node* sortedMerge(Node* head1, Node* head2) {
+        // Create a dummy node to serve as the starting point of the merged list
+        Node* dummy = new Node(0);
+        Node* tail = dummy;
+
+        // Traverse both lists
+        while (head1 && head2) {
+            if (head1->data <= head2->data) {
+                tail->next = head1;
+                head1 = head1->next;
+            } else {
+                tail->next = head2;
+                head2 = head2->next;
+            }
+            tail = tail->next;
+        }
+
+        // Attach the remaining nodes from either list
+        if (head1) tail->next = head1;
+        if (head2) tail->next = head2;
+
+        // The merged list starts from dummy->next
+        Node* mergedHead = dummy->next;
+        delete dummy; // Free the dummy node
+        return mergedHead;
+    }
+};
